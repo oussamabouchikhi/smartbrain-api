@@ -1,14 +1,13 @@
 {
   "name": "smartbrain-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Smartbrain is an app that detects faces in users uploaded images",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Oussama Bouchikhi",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
