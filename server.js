@@ -4,9 +4,9 @@ const bcrypt     = require('bcryptjs');
 const cors       = require('cors');
 const knex       = require('knex');
 
-const signin  = require('./controllers/signin');
+const {signinHandler}  = require('./controllers/signin');
 const {signupHandler}  = require('./controllers/signup');
-const profile = require('./controllers/profile');
+const {getProfileHandler} = require('./controllers/profile');
 const image   = require('./controllers/image');
 
 const db = knex({
@@ -27,18 +27,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send(database.users);
-    
-});
-
-app.post('/signin', signin.signinHandler(db, bcrypt) );
-
+app.get('/', (req, res) => { res.send(database.users)});
+app.post('/signin', signinHandler(db, bcrypt) );
 app.post('/signup', (req, res) => { signupHandler(req, res, db, bcrypt) });
-
-app.get('/profile/:id', (req, res) => { profile.getProfileHandler(req, res, db) });
-
+app.get('/profile/:id', (req, res) => { getProfileHandler(req, res, db) });
 app.put('/image', (req, res) => { image.imageHandler(req, res, db) });
+app.post('/imageUrl', (req, res) => { image.handleApiCall(req, res) });
 
 
 const PORT = 8000;
