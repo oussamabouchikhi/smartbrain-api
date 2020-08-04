@@ -4,7 +4,8 @@
   "description": "Smartbrain is an app that detects faces in users uploaded images",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "Oussama Bouchikhi",
