@@ -12,9 +12,9 @@ const image   = require('./controllers/image');
 const db = knex({
     client: 'pg',
     connection: {
-        host : '127.0.0.1',
+        host : 'postgresql-infinite-14573',
         user : 'postgres',
-        password : 'admin',
+        password : '',
         database : 'smart-brain'
     }
 });
@@ -35,7 +35,7 @@ app.put('/image', (req, res) => { image.imageHandler(req, res, db) });
 app.post('/imageUrl', (req, res) => { image.handleApiCall(req, res) });
 
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Server up & running at localhost:${PORT}`);
 });
