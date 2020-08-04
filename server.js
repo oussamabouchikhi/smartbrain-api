@@ -12,10 +12,8 @@ const image   = require('./controllers/image');
 const db = knex({
     client: 'pg',
     connection: {
-        host : 'postgresql-infinite-14573',
-        user : 'postgres',
-        password : '',
-        database : 'smart-brain'
+        connectString: process.env.DATABASE_URL,
+        ssl: true
     }
 });
 db.select('*').from('users')
